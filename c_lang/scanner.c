@@ -1,6 +1,6 @@
-#line 2 "scanner.c"
+#line 2 "./c_lang/scanner.c"
 
-#line 4 "scanner.c"
+#line 4 "./c_lang/scanner.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -456,11 +456,11 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "scanner.l"
-#line 2 "scanner.l"
+#line 1 "./c_lang/scanner.l"
+#line 2 "./c_lang/scanner.l"
 /* header */
 #include "token.h"
-#line 464 "scanner.c"
+#line 464 "./c_lang/scanner.c"
 
 #define INITIAL 0
 
@@ -642,13 +642,13 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 6 "scanner.l"
+#line 6 "./c_lang/scanner.l"
 
 
 
 /* blanks */
 
-#line 652 "scanner.c"
+#line 652 "./c_lang/scanner.c"
 
 	if ( !(yy_init) )
 		{
@@ -734,11 +734,11 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 11 "scanner.l"
+#line 11 "./c_lang/scanner.l"
 ;
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
-#line 13 "scanner.l"
+#line 13 "./c_lang/scanner.l"
 return(T_EOF);
 	YY_BREAK
 
@@ -746,12 +746,12 @@ return(T_EOF);
 
 case 2:
 YY_RULE_SETUP
-#line 19 "scanner.l"
+#line 19 "./c_lang/scanner.l"
 return(T_VAR);
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 20 "scanner.l"
+#line 20 "./c_lang/scanner.l"
 return(T_FUNC);
 	YY_BREAK
 
@@ -819,10 +819,10 @@ return(T_FUNC);
 int yywrap() { return 1; }
 case 4:
 YY_RULE_SETUP
-#line 85 "scanner.l"
+#line 85 "./c_lang/scanner.l"
 ECHO;
 	YY_BREAK
-#line 826 "scanner.c"
+#line 826 "./c_lang/scanner.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1817,4 +1817,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 85 "scanner.l"
+#line 85 "./c_lang/scanner.l"
