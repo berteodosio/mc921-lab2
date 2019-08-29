@@ -1,5 +1,8 @@
 shopt -s extglob               # Here you change (if needed) that value
 
+
+flex -i -o ./c_lang/scanner.c ./c_lang/scanner.l
+
 FixFile () {
     sed -e s/ENUM/enum/g $1 |
     sed -e s/CASE/case/g |
