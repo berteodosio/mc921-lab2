@@ -4,6 +4,8 @@
 
 extern int yylex();
 
+extern int linesCount;
+
 char *yytext;
 
 int yyerror(char *s) {
@@ -12,11 +14,14 @@ int yyerror(char *s) {
     return 0;
 }
 
+
 int main() {
     char format[] = "%s %s\n";
     enum token_id code;
 
     int count = 0;
+    // yyin  =3;
+    // printf("%d\n", );
 
     do {
         code = yylex();
@@ -36,6 +41,6 @@ int main() {
         }
         count++;
     } while (code != T_EOF);
-    printf("lines:%d\n", count);
+    printf("lines:%d\n", linesCount);
     return 0;
 }

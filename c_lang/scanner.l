@@ -1,25 +1,36 @@
 %{
 /* header */
+#include <stdio.h>
 #include "token.h"
+
+%}
+
+%{
+int linesCount = 0;
 %}
 
 %%
 
+\n          { linesCount++; }
+
 %{
 /* blanks */
 %}
-[ \t\n]   ;
+[ \t\n]         ;
 "//".*\n        ;
 
 <<EOF>> return(T_EOF);
 
 %{
 /* keywords */
+
 %}
 
 %{
 /* Tokens from C lang */
 %}
+
+
 
 "int"       return(T_INT);
 "char"      return(T_CHAR);
@@ -69,7 +80,6 @@
 ">="        return(T_G_OR_E);
 "<"         return(T_SMALLER);
 "<="        return(T_S_OR_E);
-
 
 [a-zA-Z_][a-zA-Z0-9_]*    return(T_ID);
 [0-9]+                  return(T_NUM);
