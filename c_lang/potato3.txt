@@ -25,4 +25,4 @@ T_OPEN_K {
 T_CLOSE_B ]
 T_OPEN_B [
 T_SEMI_COLON ;
-T_ERROR line 3
+T_ERROR line 4

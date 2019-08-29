@@ -6,7 +6,7 @@
 %}
 
 %{
-int linesCount = 0;
+int linesCount = 1;
 %}
 
 %%

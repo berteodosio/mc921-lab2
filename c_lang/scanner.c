@@ -580,7 +580,7 @@ char *yytext;
 #include "token.h"
 
 #line 9 "scanner.l"
-int linesCount = 0;
+int linesCount = 1;
 #line 585 "scanner.c"
 
 #define INITIAL 0
