@@ -1,27 +1,36 @@
 %{
 /* header */
+#include <stdio.h>
 #include "token.h"
+
+%}
+
+%{
+int linesCount = 1;
 %}
 
 %%
 
+\n          { linesCount++; }
+
 %{
 /* blanks */
 %}
-[ \t\n]   ;
+[ \t\n]         ;
+"//".*\n        ;
 
 <<EOF>> return(T_EOF);
 
 %{
 /* keywords */
-%}
 
-var     return(T_VAR);
-func    return(T_FUNC);
+%}
 
 %{
 /* Tokens from C lang */
-}
+%}
+
+
 
 "int"       return(T_INT);
 "char"      return(T_CHAR);
@@ -72,9 +81,12 @@ func    return(T_FUNC);
 "<"         return(T_SMALLER);
 "<="        return(T_S_OR_E);
 
+[a-zA-Z_][a-zA-Z0-9_]*    return(T_ID);
 
-[a-zA-Z][a-zA-Z0-9]*    return(T_ID);
-[0-9]+                  return(T_NUM);
+[0-9]+\.?[0-9]*           return(T_NUM);
+\'(\\.|[^'\\])*\'       return(T_NUM);
+"0x"([0-9]*|[a-fA-F]*)+       return(T_NUM);
+
 \"(\\.|[^"\\])*\"       return(T_STR);
 
 .                       return(T_ERROR);
