@@ -82,7 +82,11 @@ int linesCount = 0;
 "<="        return(T_S_OR_E);
 
 [a-zA-Z_][a-zA-Z0-9_]*    return(T_ID);
-[0-9]+                  return(T_NUM);
+
+[0-9]+\.?[0-9]*           return(T_NUM);
+\'(\\.|[^'\\])*\'       return(T_NUM);
+"0x"([0-9]*|[a-fA-F]*)+       return(T_NUM);
+
 \"(\\.|[^"\\])*\"       return(T_STR);
 
 .                       return(T_ERROR);
