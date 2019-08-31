@@ -16,8 +16,8 @@ int linesCount = 1;
 %{
 /* blanks */
 %}
-[ \t\n]         ;
-"//".*\n        ;
+[ \t]         ;
+"//".*        ;
 
 <<EOF>> return(T_EOF);
 
