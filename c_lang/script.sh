@@ -26,14 +26,14 @@ FixFile () {
 
 # TEST LINES
 # ###############################################
-FixFile code1.c corrected1.c
-diff corrected1.c ./results/code1_corrected.c
-FixFile code2.c corrected2.c
-diff corrected2.c ./results/code2_corrected.c
-FixFile code3.c corrected3.c
-diff corrected3.c ./results/code3_corrected.c
-FixFile code4.c corrected4.c
-diff corrected4.c ./results/code4_corrected.c
+# FixFile code1.c corrected1.c
+# diff corrected1.c ./results/code1_corrected.c
+# FixFile code2.c corrected2.c
+# diff corrected2.c ./results/code2_corrected.c
+# FixFile code3.c corrected3.c
+# diff corrected3.c ./results/code3_corrected.c
+# FixFile code4.c corrected4.c
+# diff corrected4.c ./results/code4_corrected.c
 # ###############################################
 # END TEST LINES
 
@@ -43,7 +43,7 @@ chmod +x token_printer
 ./token_printer < corrected.c > tokens.txt
 
 FilterTokens () {
-    # TODO: filter T_ID, T_STR, T_NUM with sed
+    sed '/T_ID\|T_STR\|T_NUM/!d' $1 > $2
 }
 
 FilterTokens tokens.txt selected.txt
