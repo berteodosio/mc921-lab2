@@ -1,8 +1,12 @@
-shopt -s extglob               # Here you change (if needed) that value
+shopt -s extglob
 
+# use Flex and GCC to create the scanner.c file from the language tokens
 flex -i -o scanner.c scanner.l
 gcc scanner.c token_printer.c -o token_printer
 
+# fixes all wrong keywords from $1 file, placing the results
+# also, remove lines containg the TEST keyword.
+# on $2 file
 FixFile () {
     sed -e s/ENUM/enum/g $1 |
     sed -e s/CASE/case/g |
@@ -24,25 +28,20 @@ FixFile () {
     sed -e s/ELSE/else/g >  $2
 }
 
-# TEST LINES
-# ###############################################
-# FixFile code1.c corrected1.c
-# diff corrected1.c ./results/code1_corrected.c
-# FixFile code2.c corrected2.c
-# diff corrected2.c ./results/code2_corrected.c
-# FixFile code3.c corrected3.c
-# diff corrected3.c ./results/code3_corrected.c
-# FixFile code4.c corrected4.c
-# diff corrected4.c ./results/code4_corrected.c
-# ###############################################
-# END TEST LINES
-
+# generates corrected.c file, replacing wrong language keywords
+# by the corrected ones.
 FixFile $1 corrected.c
 chmod +x token_printer
 ./token_printer < corrected.c > tokens.txt
 
+# removes all lines from $1 file that not containt "T_ID"
+# or "T_STR " or "T_NUM".
+# note that the space after "T_STR" is required to avoid not removing
+# lines that contains the "T_STRUCT" token.
 FilterTokens () {
     sed -n -E "/T_ID|T_STR |T_NUM/p" $1 > $2
 }
 
+# genreates selected.txt file by selecting only the required tokens
+# from the tokens.txt file
 FilterTokens tokens.txt selected.txt
