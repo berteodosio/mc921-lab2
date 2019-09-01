@@ -37,9 +37,7 @@ FixFile () {
 # ###############################################
 # END TEST LINES
 
-echo "BEFORE CORREC"
 FixFile $1 corrected.c
-echo "AFTER CORREC"
 chmod +x token_printer
 ./token_printer < corrected.c > tokens.txt
 
