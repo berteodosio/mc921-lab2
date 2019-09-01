@@ -42,7 +42,7 @@ chmod +x token_printer
 ./token_printer < corrected.c > tokens.txt
 
 FilterTokens () {
-    sed '/T_ID\|T_STR\|T_NUM/!d' $1 > $2
+    sed -n -E "/T_ID|\<T_STR\>|T_NUM/p" $1 > $2
 }
 
 FilterTokens tokens.txt selected.txt
