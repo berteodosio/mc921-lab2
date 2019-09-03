@@ -42,6 +42,6 @@ FilterTokens () {
     sed -n -E "/T_ID|T_STR |T_NUM/p" $1 > $2
 }
 
-# genreates selected.txt file by selecting only the required tokens
+# generates selected.txt file by selecting only the required tokens
 # from the tokens.txt file
 FilterTokens tokens.txt selected.txt
