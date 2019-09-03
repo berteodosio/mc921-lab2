@@ -24,7 +24,7 @@ FixFile () {
     sed -e s/SWITCH/switch/g |
     sed -e s/CHAR/char/g |
     sed -e s/IF/if/g |
-    Sed -e /TEST/d |
+    sed -e /TEST/d |
     sed -e s/ELSE/else/g >  $2
 }
 
